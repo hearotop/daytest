@@ -1,3 +1,4 @@
+
 # 忽略 Train 下的 chars 和 charsChinese 文件夹
 Train/chars/
 Train/charsChinese/
@@ -11,3 +12,60 @@ yolo11n.pt
 # 忽略临时文件或编译生成的文件（可选）
 *.pyc
 _pycache_/
+
+# Prerequisites
+*.d
+
+# Object files
+*.o
+*.ko
+*.obj
+*.elf
+
+# Linker output
+*.ilk
+*.map
+*.exp
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Libraries
+*.lib
+*.a
+*.la
+*.lo
+*.jpg
+*.png
+
+
+# Shared objects (inc. Windows DLLs)
+*.dll
+*.so
+*.so.*
+*.dylib
+
+# Executables
+*.exe
+*.out
+*.app
+*.i*86
+*.x86_64
+*.hex
+
+# Debug files
+*.dSYM/
+*.su
+*.idb
+*.pdb
+
+# Kernel Module Compile Results
+*.mod*
+*.cmd
+.tmp_versions/
+modules.order
+Module.symvers
+Mkfile.old
+dkms.conf
+>>>>>>> 6e4d9336dd99ca786fb1312b61740fbb99bbadaf
