@@ -1,7 +1,6 @@
 
 # 忽略 Train 下的 chars 和 charsChinese 文件夹
-Train/chars/
-Train/charsChinese/
+Train/
 
 # 忽略 run 文件夹
 runs/
