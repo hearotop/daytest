@@ -21,6 +21,9 @@
 *.a
 *.la
 *.lo
+*.jpg
+*.png
+
 
 # Shared objects (inc. Windows DLLs)
 *.dll
