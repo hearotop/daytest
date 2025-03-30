@@ -4,7 +4,7 @@
 - **车牌号识别**
 
 ---
-👉 [gitee链接](https://gitee.com/hearotop/daytest.git) 
+👉 [gitee中国区](https://gitee.com/hearotop/daytest.git) 
 😍 [github链接](https://github.com/hearotop/daytest.git) 
 
 ### 如果喜欢请赞助一下吧！🫠
