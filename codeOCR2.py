@@ -2,7 +2,8 @@ import cv2
 import numpy as np
 from numpy.linalg import norm
 import matplotlib.pyplot as plt
-
+#路径更改为自己的路径，改代码是在原有代码基础上将循环部分做了更改以及修改了部分参数！
+#
 # 省份，不包含所有省份，数据集缺失
 provinces = [
     "zh_cuan", "川", "zh_e", "鄂", "zh_gan", "赣", "zh_gan1", "甘", "zh_gui", "贵", "zh_gui1", "桂", "zh_hei", "黑",
@@ -110,107 +111,100 @@ def preprocess_hog(digits):
 
 
 if __name__ == "__main__":
-    path = "Test/蒙AB0008.jpg"
-    # 如果是字符则去读图片
-    if type(path) == type(""):
-        img =cv2.imdecode(np.fromfile(path, dtype=np.uint8), cv2.IMREAD_COLOR)
+    path = "./images/04_1.png"
+    image_np = cv2.imread(path)
 
-    # 否则直接用
-    else:
-        img = path
-    #image_np = cv2.imread(path)
-
-    #img = image_np
+    img = image_np
     pic_hight, pic_width = img.shape[:2]
 
     # 高斯去噪
     img = cv2.GaussianBlur(img, (5, 5), 0)
-    #mat_im = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
-    #plt.imshow(mat_im)
-    #plt.show()
+    mat_im = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+    # plt.imshow(mat_im)
+    # plt.show()
 
     # 图片灰度化
     img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-    #mat_im = cv2.cvtColor(img_gray, cv2.COLOR_BGR2RGB)
-    #plt.imshow(mat_im)
-    #plt.show()
+    mat_im = cv2.cvtColor(img_gray, cv2.COLOR_BGR2RGB)
+    # plt.imshow(mat_im)
+    # plt.show()
 
     # 开运算
-    kernel = np.ones((20, 20), np.uint8)
+    kernel = np.ones((30,30), np.uint8)
     img_opening = cv2.morphologyEx(img_gray, cv2.MORPH_OPEN, kernel)
     #mat_im = cv2.cvtColor(img_opening, cv2.COLOR_BGR2RGB)
-    #plt.imshow(mat_im)
-    #plt.show()
+    # plt.imshow(mat_im)
+    # plt.show()
 
     # 图像合并
     img_opening_add = cv2.addWeighted(img_gray, 1, img_opening, -1, 0)
-    #mat_im = cv2.cvtColor(img_opening_add, cv2.COLOR_BGR2RGB)
-    #plt.imshow(mat_im)
-    #plt.show()
+    mat_im = cv2.cvtColor(img_opening_add, cv2.COLOR_BGR2RGB)
+    # plt.imshow(mat_im)
+    # plt.show()
 
     # 二值化
     ret, img_thresh = cv2.threshold(img_opening_add, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
-    #mat_im = cv2.cvtColor(img_thresh, cv2.COLOR_BGR2RGB)
-    #plt.imshow(mat_im)
-    #plt.show()
+    mat_im = cv2.cvtColor(img_thresh, cv2.COLOR_BGR2RGB)
+    # plt.imshow(mat_im)
+    # plt.show()
 
     # 找到图像边缘
     img_edge = cv2.Canny(img_thresh, 100, 200)
-    #mat_im = cv2.cvtColor(img_edge, cv2.COLOR_BGR2RGB)
-    #plt.imshow(mat_im)
-    #plt.show()
+    mat_im = cv2.cvtColor(img_edge, cv2.COLOR_BGR2RGB)
+    # plt.imshow(mat_im)
+    # plt.show()
 
     # 使用开运算和闭运算让图像边缘成为一个整体
     kernel = np.ones((4, 19), np.uint8)
     img_edge1 = cv2.morphologyEx(img_edge, cv2.MORPH_CLOSE, kernel)
     #mat_im = cv2.cvtColor(img_edge1, cv2.COLOR_BGR2RGB)
-    #plt.imshow(mat_im)
-    #plt.show()
+    # plt.imshow(mat_im)
+    # plt.show()
 
-    #kernel2 = np.ones((30, 50), np.uint8)
+    # kernel = np.ones((30, 50), np.uint8)
     img_close_open = cv2.morphologyEx(img_edge1, cv2.MORPH_OPEN, kernel)
 
-    
-   # contours, hierarchy = cv2.findContours(img_close_open, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
-# 查找图像边缘整体形成的矩形区域，可能有很多，车牌就在其中一个矩形区域中 CHAIN_APPROX_SIMPLE指保留拐点
+    # 查找图像边缘整体形成的矩形区域，可能有很多，车牌就在其中一个矩形区域中
+
+
+    # 查找图像边缘整体形成的矩形区域，可能有很多，车牌就在其中一个矩形区域中 CHAIN_APPROX_SIMPLE指保留拐点
     try:
-        image, contours, hierarchy = cv2.findContours(img_close_open, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+        image, contours, hierarchy = cv2.findContours(    img_close_open, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
     except ValueError:
         # ValueError: not enough values to unpack (expected 3, got 2)
         # cv2.findContours方法在高版本OpenCV中只返回两个参数
-        contours, hierarchy = cv2.findContours(img_close_open, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
-        contours = [cnt for cnt in contours if cv2.contourArea(cnt) > 2000]  # 把大于2000的矩形选出来
+        contours, hierarchy = cv2.findContours(    img_close_open, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+        #contours = [cnt for cnt in contours if cv2.contourArea(cnt) > 2000]  # 把大于2000的矩形选出来
 
     # 一一排除不是车牌的矩形区域
     car_contours = []
     img_drawContoursAll = img.copy()
     img_drawContoursScopeofCompliance = img.copy()
     for cnt in contours:
-        img_drawContoursAll = cv2.drawContours(img_drawContoursAll, [cnt], 0, (0, 0, 255), 2)
-       # mat_im = cv2.cvtColor(img_drawContoursAll, cv2.COLOR_BGR2RGB)
-       # plt.imshow(mat_im)
-       # plt.show()
-        # 车牌区域允许的面积
-        #if 200 > cv2.contourArea(cnt) or cv2.contourArea(cnt) > 2000:
-         #   continue
-        # 获取最小外接矩阵，中心点坐标，宽高，旋转角度
+        if cv2.contourArea(cnt) or cv2.contourArea(cnt) > 2000:
 
-        rect = cv2.minAreaRect(cnt)
+            img_drawContoursAll = cv2.drawContours(img_drawContoursAll, [cnt], 0, (0, 0, 255), 2)
+            mat_im = cv2.cvtColor(img_drawContoursAll, cv2.COLOR_BGR2RGB)
+            # plt.imshow(mat_im)
+            # plt.show()
+            # 车牌区域允许的面积
+        
+            # 获取最小外接矩阵，中心点坐标，宽高，旋转角度
+            rect = cv2.minAreaRect(cnt)
 
-        # 要求矩形区域长宽比在2到5.5之间
-        area_width, area_height = rect[1]
-        #使用形状进行判定
-        wh_ratio = area_height / area_width if area_width < area_height else area_width / area_height
-        # 矩形长宽比
-        if 2 < wh_ratio < 5.5:
-            car_contours.append(rect)
-            #box = cv2.boxPoints(rect)
-            #box = np.int0(box)
-            #img_drawContoursScopeofCompliance = cv2.drawContours(img_drawContoursScopeofCompliance, [box], 0,
-             #                                                    (0, 0, 255), 2)
-        #mat_im = cv2.cvtColor(img_drawContoursScopeofCompliance, cv2.COLOR_BGR2RGB)
-        #plt.imshow(mat_im)
-        #plt.show()
+            # 要求矩形区域长宽比在2到5.5之间
+            area_width, area_height = rect[1]
+            wh_ratio = area_height / area_width if area_width < area_height else area_width / area_height
+            # 矩形长宽比
+            if 2 < wh_ratio < 5.5:
+                car_contours.append(rect)
+                #box = cv2.boxPoints(rect)
+            #     box = np.intp(box)
+            #     img_drawContoursScopeofCompliance = cv2.drawContours(img_drawContoursScopeofCompliance, [box], 0,
+            #                                                          (0, 0, 255), 2)
+            # mat_im = cv2.cvtColor(img_drawContoursScopeofCompliance, cv2.COLOR_BGR2RGB)
+            # plt.imshow(mat_im)
+            # plt.show()
 
     card_imgs = []
     # 矩形区域可能是倾斜的矩形，需要矫正，以便使用颜色定位
@@ -229,7 +223,6 @@ if __name__ == "__main__":
         else:  # 车牌不是正的
             angle = rect[2]
         rect = (rect[0], (rect[1][0] + 5, rect[1][1] + 5), angle)  # 扩大范围，避免车牌边缘被排除
-   
 
         # 获取矩形四个顶点，浮点型
         box = cv2.boxPoints(rect)
@@ -275,16 +268,10 @@ if __name__ == "__main__":
             card_img = dst[int(right_point[1]):int(heigth_point[1]), int(new_left_point[0]):int(right_point[0])]
             # 可能有多个车牌多次进入循环，所以用列表放起来
             card_imgs.append(card_img)
-    #or card_img in card_imgs:
-     #   mat_im = cv2.cvtColor(card_img, cv2.COLOR_BGR2RGB)
-      #  plt.imshow(mat_im)
-       # plt.show()
-    
-      # 矩形区域可能是倾斜的矩形，需要矫正，以便使用颜色定位
-    print(f"找到的轮廓数量: {len(contours)}")
-    print(f"符合要求的矩形区域数量: {len(car_contours)}")
-    if len(car_contours) == 0:
-         print("未找到符合要求的矩形区域")  
+    for card_img in card_imgs:
+        mat_im = cv2.cvtColor(card_img, cv2.COLOR_BGR2RGB)
+        # plt.imshow(mat_im)
+        # plt.show()
     # 开始使用颜色定位，排除不是车牌的矩形，目前只识别蓝、绿、黄车牌
     colors = []
     global_card_index = []
@@ -367,10 +354,10 @@ if __name__ == "__main__":
         card_imgs[card_index] = card_img[yl:yh, xl:xr] \
             if color != "green" or yl < (yh - yl) // 4 else card_img[yl - (yh - yl) // 4:yh, xl:xr]
         global_card_index.append(card_index)
-        #for card_img in card_imgs:
-         #   mat_im = cv2.cvtColor(card_img, cv2.COLOR_BGR2RGB)
-          #  plt.imshow(mat_im)
-           # plt.show()
+        # for card_img in card_imgs:
+        #     mat_im = cv2.cvtColor(card_img, cv2.COLOR_BGR2RGB)
+        #     plt.imshow(mat_im)
+        #     plt.show()
 
         # 切割车牌中的字符，根据直方图的波峰来定位
         # 开始逐一排查颜色块
@@ -406,8 +393,8 @@ if __name__ == "__main__":
                     x_histogram_img[y][0:int(x_histogram_normalized[y] - 1)] = 0
 
                 mat_im = cv2.cvtColor(x_histogram_img, cv2.COLOR_BGR2RGB)
-                #plt.imshow(mat_im)
-                #plt.show()
+                # plt.imshow(mat_im)
+                # plt.show()
 
                 x_histogram_imgs.append(x_histogram_img)
 
@@ -440,8 +427,8 @@ if __name__ == "__main__":
                              [x, binary_img.shape[0] - int(y_histogram_normalized[x])], (0, 0, 0), 1, 8)
 
                 mat_im = cv2.cvtColor(y_histogram_img, cv2.COLOR_BGR2RGB)
-                #plt.imshow(mat_im)
-                #plt.show()
+                # plt.imshow(mat_im)
+                # plt.show()
 
                 y_histogram_imgs.append(y_histogram_img)
                 y_min = np.min(y_histogram)
@@ -504,8 +491,8 @@ if __name__ == "__main__":
                     part_card = cv2.resize(part_card, (20, 20), interpolation=cv2.INTER_AREA)
 
                     mat_im = cv2.cvtColor(part_card, cv2.COLOR_BGR2RGB)
-                    #plt.imshow(mat_im)
-                    #plt.show()
+                    # plt.imshow(mat_im)
+                    # plt.show()
 
                     # 提取hog特征，识别车牌
                     part_card = preprocess_hog([part_card])
@@ -525,26 +512,15 @@ if __name__ == "__main__":
                         model.setC(1)
                         model.setKernel(cv2.ml.SVM_RBF)
                         model.setType(cv2.ml.SVM_C_SVC)
-                        model = model.load("./model/svm.dat")
+                        model = model.load("./model/svmchars.dat")
                         r = model.predict(part_card)
                         resp = r[1].ravel()
                         charactor = chr(int(resp[0]))
                     # 判断最后一个数是否是车牌边缘，假设车牌边缘被认为是1
-                     # 判断最后一个数是否是车牌边缘，假设车牌边缘被认为是1
-                if charactor == "1" and i == len(part_cards) - 1:
-                        if color == 'blue' and len(part_cards) > 7:
-                            if part_card_old.shape[0] / part_card_old.shape[1] >= 7:  # 1太细，认为是边缘
-                                continue
-                        elif color == 'blue' and len(part_cards) > 7:
-                            if part_card_old.shape[0] / part_card_old.shape[1] >= 7:  # 1太细，认为是边缘
-                                continue
-                        elif color == 'green' and len(part_cards) > 8:
-                            if part_card_old.shape[0] / part_card_old.shape[1] >= 7:  # 1太细，认为是边缘
-                                continue
+                    if charactor == "1" and i == len(part_cards) - 1:
+                        if part_card_old.shape[0] / part_card_old.shape[1] >= 7:  # 1太细，认为是边缘
+                            continue
+                    predict_results.append(charactor)
                 card_colors.append(color)
-                predict_results.append(charactor)
-                break
-          
         print(predict_results, card_colors)  # 识别到的字符、车牌颜色
-           
-
+        break
