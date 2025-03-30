@@ -4,10 +4,12 @@
 - **车牌号识别**
 
 ---
+👉 [gitee链接](https://gitee.com/hearotop/daytest.git) 
+👉 [github链接](https://github.com/hearotop/daytest.git) 
 
 ### 如果喜欢请赞助一下吧！🫠
 
-<div style="display: flex; gap: 10px; margin-top: 20px;">
+<div style="display: flex; flex-direction: row; gap: 10px; margin-top: 20px;">
     <img src="https://raw.githubusercontent.com/hearotop/daytest/main/zfb.jpg" alt="支付宝" style="width: 200px; height: auto; border-radius: 10px;">
     <img src="https://raw.githubusercontent.com/hearotop/daytest/main/wx.jpg" alt="微信" style="width: 200px; height: auto; border-radius: 10px;">
 </div>
