@@ -4,6 +4,8 @@
 <p>是SVM模型下的。模型在model里面</p>
 <p>数据集下载链接</p>
 <p>通过网盘分享的文件：公共链接: https://pan.baidu.com/s/1RJQHHb6fUjQrdrAw9RRZAQ?pwd=80o0 提取码: 80o0</p>
-<p><strong>如果喜欢请赞助一下吧！</strong>🫠🫠🫠🫠🫠🫠🫠🫠🫠🫠🫠🫠🫠🫠🫠🫠🫠🫠🫠🫠🫠🫠🫠🫠🫠🫠🫠🫠🫠🫠</p>
-
-<p><img src="https://raw.githubusercontent.com/hearotop/daytest/main/zfb.jpg"  alt="沙漠中的岩石图片"><img src="https://raw.githubusercontent.com/hearotop/daytest/main/wx.jpg"  alt="沙漠中的岩石图片"></p>
+<p><strong>如果喜欢请赞助一下吧！</strong>🫠🫠🫠🫠🫠🫠🫠🫠🫠🫠🫠🫠🫠🫠🫠🫠🫠🫠🫠🫠🫠🫠🫠🫠🫠🫠🫠🫠🫠</p>
+<p style="display: flex; gap: 10px;">
+    <img src="https://raw.githubusercontent.com/hearotop/daytest/main/zfb.jpg" alt="zfb" style="width: 200px; height: auto;">
+    <img src="https://raw.githubusercontent.com/hearotop/daytest/main/wx.jpg" alt="wx" style="width: 200px; height: auto;">
+</p>
