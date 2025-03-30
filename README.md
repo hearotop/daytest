@@ -1,5 +1,5 @@
-# daytest
-This is the repository of my daily homework.
+# 日常代码练习
+
 <p>codeocr、codeOCR2和车牌识别就是所有成功的代码！</p>
 <p>是SVM模型下的。模型在model里面</p>
 <p>数据集下载链接</p>
