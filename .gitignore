@@ -11,7 +11,9 @@ yolo11n.pt
 # 忽略临时文件或编译生成的文件（可选）
 *.pyc
 _pycache_/
-
+.git
+.ideea/
+.vscode/
 # Prerequisites
 *.d
 
