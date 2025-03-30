@@ -7,15 +7,6 @@
 👉 [gitee中国区](https://gitee.com/hearotop/daytest.git) 
 😍 [github链接](https://github.com/hearotop/daytest.git) 
 
-### 如果喜欢请赞助一下吧！🫠
-
-<div style="display: flex; flex-direction: row; gap: 10px; margin-top: 20px;">
-    <img src="https://gitee.com/hearotop/daytest/raw/main/wx.jpg" alt="微信" style="width: 200px; height: 200px; border-radius: 10px;">
-    <img src="https://gitee.com/hearotop/daytest/raw/main/zfb.jpg" alt="支付宝" style="width: 200px; height: 200px; border-radius: 10px;">
-</div>
-
----
-
 ## 编译原理代码
 
 **Compliers 文件夹** 是关于编译原理的代码实现。  
@@ -38,6 +29,15 @@
 通过网盘分享的数据集文件：  
 👉 [公共链接](https://pan.baidu.com/s/1RJQHHb6fUjQrdrAw9RRZAQ?pwd=80o0)  
 💡 提取码：`80o0`
+
+---
+
+### 如果喜欢请赞助一下吧！🫠
+
+<div style="display: flex; flex-direction: row; gap: 10px; margin-top: 20px;">
+    <img src="https://gitee.com/hearotop/daytest/raw/main/wx.jpg" alt="微信" style="width: 200px; height: 200px; border-radius: 10px;">
+    <img src="https://gitee.com/hearotop/daytest/raw/main/zfb.jpg" alt="支付宝" style="width: 200px; height: 200px; border-radius: 10px;">
+</div>
 
 ---
 
