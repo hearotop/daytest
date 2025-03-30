@@ -34,7 +34,7 @@
 
 ### 如果喜欢请赞助一下吧！🫠
 
-<div style="display: flex; flex-direction: row; gap: 10px; margin-top: 20px;">
+<div style="display: flex; gap: 10px; margin-top: 20px;">
     <img src="https://gitee.com/hearotop/daytest/raw/main/wx.jpg" alt="微信" style="width: 200px; height: 200px; border-radius: 10px;">
     <img src="https://gitee.com/hearotop/daytest/raw/main/zfb.jpg" alt="支付宝" style="width: 200px; height: 200px; border-radius: 10px;">
 </div>
