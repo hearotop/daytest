@@ -9,8 +9,9 @@
 
 ## 编译原理代码
 
-**Compliers 在master 分支** 是关于编译原理的代码实现。  
+**Compliers 在Master分支里面** 是关于编译原理的代码实现。  
 目前仅支持 **C++** 实现，后续计划扩展到以下语言：  
+- **C++**
 - **Java**
 - **Python**
 - **Kotlin**
@@ -35,8 +36,8 @@
 ### 如果喜欢请赞助一下吧！🫠
 
 <div style="display: flex; gap: 10px; margin-top: 20px;">
-    <img src="https://gitee.com/hearotop/daytest/raw/main/wx.jpg" alt="微信" style="width: 200px; height: 200px; border-radius: 10px;">
-    <img src="https://gitee.com/hearotop/daytest/raw/main/zfb.jpg" alt="支付宝" style="width: 200px; height: 200px; border-radius: 10px;">
+    <img src="https://gitee.com/hearotop/note/raw/master/assert/wx.jpg" alt="微信" style="width: 200px; height: 200px; border-radius: 10px;">
+    <img src="https://gitee.com/hearotop/note/raw/master/assert/zfb.jpg" alt="支付宝" style="width: 200px; height: 200px; border-radius: 10px;">
 </div>
 
 ---
