@@ -3,14 +3,14 @@ spring:
     name: demo
   datasource:
     url: jdbc:mysql://localhost:3306/emargce_app?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
-    username: hearo
-    password: ghb754869G.
+    username: #输入你自己的账号
+    password: #输入你自己的密码
     driver-class-name: com.mysql.cj.jdbc.Driver
   redis:
     host: localhost
     port: 6379
     database: 4 # 切换到数据库 1
-    password: ghb754869
+    password: #输入你自己的密码
 server:
   port: 8080
 mybatis-plus:
