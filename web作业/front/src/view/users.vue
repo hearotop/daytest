@@ -115,17 +115,15 @@ onMounted(()=>
       console.log("Component mounted.");
       getUserList().then(
           res=>
-          {
+          { 
             console.log(res);
             userList.value = res.data;
-
           }
-      ).catch
-          (err=>
-          {
-            ElNotification({ title: '失败', message: '获取用户列表失败', type:'error' });
+      ).catch(
+          err=>
+          { 
+            ElNotification({ title: '失败', message: '获取用户列表失败', type: 'error' });
             console.log(err);
-         
           }
       )
     }

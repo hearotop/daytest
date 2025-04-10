@@ -16,10 +16,12 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+    
 
     // 获取所有用户
     @GetMapping("/list")
     public ResponseEntity<List<User>> getAllUsers() {
+        
         return ResponseEntity.ok().body(userService.getAllUsers());
     }
     // 根据ID获取用户

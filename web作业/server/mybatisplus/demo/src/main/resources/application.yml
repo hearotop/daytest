@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: demo
+  datasource:
+    url: jdbc:mysql://localhost:3306/emargce_app?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+    username: hearo
+    password: ghb754869G.
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  redis:
+    host: localhost
+    port: 6379
+    database: 4 # 切换到数据库 1
+    password: ghb754869
+server:
+  port: 8080
+mybatis-plus:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.example.demo.Class

@@ -1,16 +1,10 @@
 <script setup lang="ts">
 import './assets/globe.css'
-
-import View from "@/view/view.vue";
-import Eather from "@/components/Eather.vue";
-import Users from "@/view/users.vue";
 </script>
 
 <template>
   <div id="app">
-    <div class="rcontainer">
-    <div class="globe"> <Users/></div>
-    </div>
+    <router-view></router-view>
   </div>
 </template>
 
