@@ -147,4 +147,5 @@ coverage
 *.sw?
 
 *.tsbuildinfo
+dataset/
 >>>>>>> 6e4d9336dd99ca786fb1312b61740fbb99bbadaf
