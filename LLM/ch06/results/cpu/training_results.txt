@@ -1,0 +1,13 @@
+Training Configuration:
+Platform: CPU
+Batch size: 20
+Word vector size: 650
+Hidden size: 650
+Learning rate: 20.0
+Dropout: 0.5
+Max gradient: 0.25
+
+Results:
+Best validation perplexity: 210.24
+Test perplexity: 205.82
+Training time: 1425.92 seconds

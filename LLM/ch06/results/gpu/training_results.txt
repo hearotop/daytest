@@ -1,0 +1,13 @@
+Training Configuration:
+Platform: GPU
+Batch size: 20
+Word vector size: 650
+Hidden size: 650
+Learning rate: 20.0
+Dropout: 0.5
+Max gradient: 0.25
+
+Results:
+Best validation perplexity: 212.86
+Test perplexity: 208.30
+Training time: 150.34 seconds
